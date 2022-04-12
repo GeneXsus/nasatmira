@@ -1,9 +1,11 @@
-  <div class="w-100 mt-5">
-    <div class="spinner-border text-info" *ngIf="detalles.length>0" role="status">
+  <div class="w-100 mt-3">
+    <!-- <div class="spinner-border text-info" *ngIf="detalles.length>0" role="status">
+
+    </div> -->
+    <div class="w-100 mt-4">
+      <app-nasa-grid  *ngIf="detalles.length>0" [detalles]="detalles"></app-nasa-grid>
 
     </div>
-    <h1 class="title">Imágenes de la semana</h1>
-    <app-nasa-grid  *ngIf="detalles.length>0" [detalles]="detalles"></app-nasa-grid>
 
   </div>
 

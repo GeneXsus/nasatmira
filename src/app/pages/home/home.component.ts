@@ -8,18 +8,20 @@ import { NasaService } from 'src/app/services/nasa.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public detalles: NasaDetalle[]=[]
+  public detalles: NasaDetalle[]=[];
+  public loading:boolean=true;
 
   constructor(private nasaService: NasaService) { }
 
   ngOnInit(): void {
-    let now= new Date()
-    let initDate= new Date(now.getFullYear(), now.getMonth(), now.getDate() - 5)
+    this.loading=true;
+    let now= new Date();
+    let initDate= new Date(now.getFullYear(), now.getMonth(), now.getDate() - 5);
     this.nasaService.getRangeDates(initDate,now)
       .subscribe(
         resp=>{
-            this.detalles=resp
-
+            this.detalles=resp;
+            this.loading=false;
         })
   }
 

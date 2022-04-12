@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NasaGridComponent } from './nasa-grid/nasa-grid.component';
 import { NasaGridItemComponent } from './nasa-grid-item/nasa-grid-item.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 
@@ -10,12 +11,14 @@ import { NasaGridItemComponent } from './nasa-grid-item/nasa-grid-item.component
   declarations: [
     NavbarComponent,
     NasaGridComponent,
-    NasaGridItemComponent
+    NasaGridItemComponent,
+    LoaderComponent
   ],
   exports:[
     NavbarComponent,
     NasaGridComponent,
-    NasaGridItemComponent
+    NasaGridItemComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule

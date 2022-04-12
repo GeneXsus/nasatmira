@@ -12,7 +12,7 @@ import { NasaService } from 'src/app/services/nasa.service';
 })
 export class DetalleComponent implements OnInit {
   public detalle: NasaDetalle;
-
+  public loading:boolean=true;
   constructor(private activatedRoute: ActivatedRoute,
     private nasaService: NasaService,
     private location: Location,
@@ -21,7 +21,7 @@ export class DetalleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.loading= true;
     const { date } = this.activatedRoute.snapshot.params;
 
 
@@ -34,6 +34,7 @@ export class DetalleComponent implements OnInit {
       }
 
       this.detalle = detalle;
+      this.loading=false;
 
     });
 

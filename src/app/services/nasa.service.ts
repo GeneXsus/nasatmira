@@ -27,9 +27,6 @@ export class NasaService {
   }
 
   transformDateFormat(date:Date):string{
-
-
-
     return (moment(date)).format('YYYY-MM-DD');
   }
 }

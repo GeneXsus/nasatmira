@@ -1,6 +1,9 @@
 
   <div class="card bg-dark detalleItem" (click)="onDetalleClick( detalle )" >
-    <img [src]="detalle.url" [alt]="detalle.title" class="card-img-top">
+    <div class="responsive-container-img ">
+      <img [src]="detalle.url" [alt]="detalle.title" class="image-bg" >
+    </div>
+
     <div class="card-body">
       <p class="card-text text-center">{{detalle.date}}</p>
       <h5 class="card-title text-center">{{detalle.title}}</h5>

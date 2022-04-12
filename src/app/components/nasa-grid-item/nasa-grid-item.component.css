@@ -1,0 +1,9 @@
+.detalleItem{
+  cursor: pointer;
+  scale:1;
+  transition: scale 2s;
+}
+
+.detalleItem:hover{
+ scale:1.2
+}

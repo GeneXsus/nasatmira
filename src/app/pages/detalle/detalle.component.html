@@ -1,0 +1,38 @@
+
+
+<div class="animate__animated animate__fadeIn animate__faster w-100" *ngIf="detalle">
+  <div class="row">
+    <div class="col-12">
+      <!-- Imagen -->
+      <img [src]="detalle.hdurl"
+           [alt]="detalle.title"
+           class="img-thumbnail">
+  </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-12">
+      <h3>{{ detalle.title }}</h3>
+    </div>
+    <div class="col-sm-4 text-right col-12">
+      <span> {{ detalle.date |date }} </span>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p> {{detalle.explanation}}</p>
+      </div>
+
+  </div>
+
+      <div class="row mt-5">
+          <div class="col">
+              <button class="btn btn-outline-info"
+                      (click)="onRegresar()">
+                  Regresar
+              </button>
+          </div>
+      </div>
+
+  </div>

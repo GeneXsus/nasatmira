@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {  } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { NasaDetalle } from 'src/app/interfaces/nasa-response';
 import { NasaService } from 'src/app/services/nasa.service';
 
@@ -13,6 +13,7 @@ import { NasaService } from 'src/app/services/nasa.service';
 export class DetalleComponent implements OnInit {
   public detalle: NasaDetalle;
   public loading:boolean=true;
+  private detalleSubscription:Subscription;
   constructor(private activatedRoute: ActivatedRoute,
     private nasaService: NasaService,
     private location: Location,
@@ -26,7 +27,7 @@ export class DetalleComponent implements OnInit {
 
 
 
-    this.nasaService.getDayDates( new Date(date) ).subscribe( ( detalle ) => {
+    this.detalleSubscription=this.nasaService.getDayDates( new Date(date) ).subscribe( ( detalle ) => {
 
       if ( !detalle ) {
         this.router.navigateByUrl('/home');
@@ -41,6 +42,9 @@ export class DetalleComponent implements OnInit {
 
 
 
+  }
+  ngOnDestroy():void{
+    this.detalleSubscription.unsubscribe()
   }
 
   onRegresar() {

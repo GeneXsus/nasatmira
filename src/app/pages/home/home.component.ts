@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { NasaDetalle } from 'src/app/interfaces/nasa-response';
 import { NasaService } from 'src/app/services/nasa.service';
 
@@ -10,6 +11,7 @@ import { NasaService } from 'src/app/services/nasa.service';
 export class HomeComponent implements OnInit {
   public detalles: NasaDetalle[]=[];
   public loading:boolean=true;
+  private  detallesSubscription:Subscription;
 
   constructor(private nasaService: NasaService) { }
 
@@ -17,12 +19,16 @@ export class HomeComponent implements OnInit {
     this.loading=true;
     let now= new Date();
     let initDate= new Date(now.getFullYear(), now.getMonth(), now.getDate() - 5);
-    this.nasaService.getRangeDates(initDate,now)
+    this.detallesSubscription=this.nasaService.getRangeDates(initDate,now)
       .subscribe(
         resp=>{
             this.detalles=resp;
             this.loading=false;
         })
+  }
+
+  ngOnDestroy():void{
+    this.detallesSubscription.unsubscribe();
   }
 
 

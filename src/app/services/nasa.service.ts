@@ -18,12 +18,9 @@ export class NasaService {
 
   }
   getRangeDates(initDate:Date,endDate:Date):Observable<NasaDetalle[]>{
-    console.log(initDate);
-    console.log(endDate);
     return this.http.get<NasaDetalle[]>(`${this.urlImagen}&start_date=${this.transformDateFormat(initDate)}&end_date=${this.transformDateFormat(endDate)}`)
   }
   getDayDates(day:Date):Observable<NasaDetalle>{
-    console.log(day);
     return this.http.get<NasaDetalle>(`${this.urlImagen}&date=${this.transformDateFormat(day)}`)
   }
 
